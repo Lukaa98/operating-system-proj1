@@ -1,8 +1,8 @@
 # cisc3320proj1-group9
 Members:
-Hareem Bokhari
-Angelo Acevado
-Nay Ayeyar
+Hareem Bokhari, 
+Angelo Acevado,
+Nay Ayeyar,
 Luka Nikabadze
 
 You must write the shell in C/C++ for Linux systems, and the shell must have the following
