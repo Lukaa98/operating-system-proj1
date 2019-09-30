@@ -1,1 +1,29 @@
 Hello this is Hareem's Shell.
+
+Overview of shell process should be 
+main(){
+  string array history
+  while(true){
+    read input
+    store input in history
+    string array = input
+    parse input by spaces and in array command
+    if command[0]== "list"
+      getwd()
+      open directory
+      print contents
+    if command[0]== "chdir"
+      chdir(command[1])
+    if command[0]== "history"
+      print contents of history
+    if command[0]== "printwd"
+      getwd()
+    if command[0]== "run"
+     //may have to change following
+	 fork()
+      if parent
+        wait()
+      if child
+        execvp(command[1])
+  }
+}
