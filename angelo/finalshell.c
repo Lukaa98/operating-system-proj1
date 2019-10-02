@@ -92,23 +92,23 @@ void parseSpace(char * str, char ** parsed2){
 // Builtin commands that we implemented into the shell
 int myCommands(char ** parsed2, char** historyList){
 
-  int numOfBuiltinCmds =4; //This will hold the # of builtin commands we are using
+  int num_myCmds =4; //This will hold the # of builtin commands we are using
   int i;
   int switchOwnArgs =0;
-  char* ListOfOwnCmds[numOfBuiltinCmds];  
+  char* myCmds[num_myCmds];  
   char * username;
 
-  ListOfOwnCmds[0] = "exit";
-  ListOfOwnCmds[1] = "cd" ;
-  ListOfOwnCmds[2] = "help";
-  ListOfOwnCmds[3] = "history";
+  myCmds[0] = "exit";
+  myCmds[1] = "cd" ;
+  myCmds[2] = "help";
+  myCmds[3] = "history";
 
  /*
   The purpose of this loop is to determine is whats in our tokenize array called parsed[0] is equal to our BUILTIN commands. If it is, we can run our switch cases
  */
-  for(i = 0; i < numOfBuiltinCmds; i++){
+  for(i = 0; i < num_myCmds; i++){
     
-    if(strcmp(parsed2[0], ListOfOwnCmds[i]) == 0  ){ //If ListOfOwnCmds[i] is EQUAL to our first command store in parsed2-first element. We Break the loop
+    if(strcmp(parsed2[0], myCmds[i]) == 0  ){ //If ListOfOwnCmds[i] is EQUAL to our first command store in parsed2-first element. We Break the loop
       switchOwnArgs = i + 1;
       break;
   }
