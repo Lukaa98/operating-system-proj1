@@ -1,1 +1,7 @@
 # cisc3320proj1-group9
+
+
+```
+ls -l
+
+```
