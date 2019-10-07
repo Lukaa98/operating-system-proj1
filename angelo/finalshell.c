@@ -13,19 +13,20 @@
  
 int history_counter =0;
 
-//Shell startup, welcome user [DONE]
+void execCommand(char **parsed2);
 
 //To print out the help Menu
 void help_call(){
-  puts("\n\t\tHelp Menu:"
+  puts("\n\t\t Help Menu:"
   "\n-------------------------------------------------------"
-  "\n\n \tThe commands that this Shell supports:"
-  "\n~> ls : for listing the the files and directory of your current Directory"
-  "\n~> pwd: Prints out the current working directory"
+  "\n\n\t The commands that this Shell supports:"
+  "\n~> ls or list : for listing the the files and directory of your current Directory"
+  "\n~> pwd or printwd: Prints out the current working directory"
   "\n~> cd .. -OR-  cd [stateDirectory]: to either go back to one directory; "
   "\n\t\t or change into a given directory"
+  "\n~> chdir .. -OR- chdir [state_directory]: to change directory"
   "\n~> history: view the previously entered commands"
-  "\n~> Up-Arrow key: Goes back to previously entered commands"
+  "\n~> Arrow key: Goes back to previously entered commands"
   "\n~> exit: Terminates the shell"
   );
 }
@@ -92,7 +93,7 @@ void parseSpace(char * str, char ** parsed2){
 // Builtin commands that we implemented into the shell
 int myCommands(char ** parsed2, char** historyList){
 
-  int num_myCmds =4; //This will hold the # of builtin commands we are using
+  int num_myCmds =5; //This will hold the # of builtin commands we are using
   int i;
   int switchOwnArgs =0;
   char* myCmds[num_myCmds];  
@@ -102,7 +103,7 @@ int myCommands(char ** parsed2, char** historyList){
   myCmds[1] = "cd" ;
   myCmds[2] = "help";
   myCmds[3] = "history";
-
+  myCmds[4] = "chdir";
  /*
   The purpose of this loop is to determine is whats in our tokenize array called parsed[0] is equal to our BUILTIN commands. If it is, we can run our switch cases
  */
@@ -118,6 +119,7 @@ int myCommands(char ** parsed2, char** historyList){
       printf("\nThank you. Goodbye\n");
       exit(EXIT_SUCCESS); 
     case 2:
+    case 5: //Both case (2&5) will use the chdir function
       chdir(parsed2[1]); // Will change to the directory in parsed2 following the directory name. EX: input: [cd testMe] will go into the testMe DIR
       return 1;
     case 3:
@@ -195,6 +197,11 @@ int main(void){
     }
     //Process the input; will tokenize it
     notifyMark = organizeInput(inputUser, tokenizedCmds, historyList);
+
+    //If-statements used incase user input "list" or "printwd"
+	// to change into ls, pwd , respectively.
+    if(strcmp(tokenizedCmds[0], "list") == 0) tokenizedCmds[0] = "ls";
+    if(strcmp(tokenizedCmds[0], "printwd") == 0) tokenizedCmds[0] = "pwd";
 
     //Will run the fork() if the command is ls, pwd 
     if(notifyMark ==1){
