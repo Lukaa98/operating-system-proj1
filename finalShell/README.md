@@ -1,5 +1,9 @@
 # cisc3320proj1-group9
 
+The system-calls that we use for this shell project are: 
+fork(); execvp(); wait(NULL); readline(); getcwd(); chdir();
+
+
 
 ```
 Example: 
@@ -51,6 +55,7 @@ finalshell.c  README.md  shell
 ~> chdir .. -OR- chdir [state_directory]: to change directory
 ~> history: view the previously entered commands
 ~> Arrow key: Goes back to previously entered commands
+~> Can run external programs: e.g firefox
 ~> exit: Terminates the shell
 
 [angelo_Shell]~> exit
