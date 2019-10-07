@@ -1,15 +1,61 @@
 # cisc3320proj1-group9
 
-Final Shell for Group 9
 
-shell.cpp is compiled and executed
+```
+Example: 
 
-1. type "list" into the shell terminal to list files and directory of a given directory;
+Directory: /home/angelo/group9Project/shellProj/cisc3320proj1-group9/angelo
+[angelo_Shell]~> ls
+finalshell.c  README.md  shell
 
-2. type "history" into the shell terminal to list commands entered in the past;
+[angelo_Shell]~> list
+finalshell.c  README.md  shell
 
-3. type "printwd" into the shell terminal to print current working directory;
+[angelo_Shell]~> pwd
+/home/angelo/group9Project/shellProj/cisc3320proj1-group9/angelo
 
-4. type "chdir" into the shell terminal to change to a given directory; and
+[angelo_Shell]~> printwd
+/home/angelo/group9Project/shellProj/cisc3320proj1-group9/angelo
 
-5. type "run" to run a program, ie: if type "run shell", it will run the shell executable file again. 
+[angelo_Shell]~> cd ..
+
+[angelo_Shell]~> printwd
+/home/angelo/group9Project/shellProj/cisc3320proj1-group9
+
+[angelo_Shell]~> chdir angelo/
+
+[angelo_Shell]~> printwd
+/home/angelo/group9Project/shellProj/cisc3320proj1-group9/angelo
+
+[angelo_Shell]~> history
+
+ 1) ls
+ 2) list
+ 3) pwd
+ 4) printwd
+ 5) cd ..
+ 6) printwd
+ 7) chdir angelo/
+ 8) printwd
+ 9) history
+[angelo_Shell]~> help
+
+		 Help Menu:
+-------------------------------------------------------
+
+	 The commands that this Shell supports:
+~> ls or list : for listing the the files and directory of your current Directory
+~> pwd or printwd: Prints out the current working directory
+~> cd .. -OR-  cd [stateDirectory]: to either go back to one directory; 
+		 or change into a given directory
+~> chdir .. -OR- chdir [state_directory]: to change directory
+~> history: view the previously entered commands
+~> Arrow key: Goes back to previously entered commands
+~> exit: Terminates the shell
+
+[angelo_Shell]~> exit
+
+Thank you. Goodbye
+
+
+```
