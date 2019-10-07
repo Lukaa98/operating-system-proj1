@@ -80,7 +80,7 @@ void execArgs(char** parsed)
 }
 
 // Function where the piped system commands is executed
-void execArgsPiped(char** parsed, char** parsedpipe)
+/*void execArgsPiped(char** parsed, char** parsedpipe)
 {
     // 0 is read end, 1 is write end
     int pipefd[2];
@@ -133,20 +133,22 @@ void execArgsPiped(char** parsed, char** parsedpipe)
         }
     }
 }
+*/
 
 // Help command builtin
 void openHelp()
 {
     puts("\n***WELCOME TO MY SHELL HELP***"
-        "\nCopyright @ Suprotik Dey"
+        "\nCopyright @ N A Y"
         "\n-Use the shell at your own risk..."
         "\nList of Commands supported:"
         "\n>cd"
         "\n>ls"
-        "\n>exit"
-        "\n>all other general commands available in UNIX shell"
-        "\n>pipe handling"
-        "\n>improper space handling");
+	"\n>hello"
+	"\n>help"
+	"\n>printwd"
+	"\n>histroy"
+        "\n>exit");
 
     return;
 }
@@ -250,7 +252,7 @@ int ownCmdHandler(char** parsed, char** hist)
 }
 
 // function for finding pipe
-int parsePipe(char* str, char** strpiped)
+/*int parsePipe(char* str, char** strpiped)
 {
     int i;
     for (i = 0; i < 2; i++) {
@@ -265,6 +267,7 @@ int parsePipe(char* str, char** strpiped)
         return 1;
     }
 }
+*/
 
 // function for parsing command words
 void parseSpace(char* str, char** parsed)
@@ -280,22 +283,24 @@ void parseSpace(char* str, char** parsed)
     }
 }
 
-int processString(char* str, char** parsed, char** parsedpipe, char ** hist)
+int processString(char* str, char** parsed, char ** hist)
 {
 
-    char* strpiped[2];
+    //char* strpiped[2];		add pipe in parameter to make it work
     int piped = 0;
 
-    piped = parsePipe(str, strpiped);
+    //piped = parsePipe(str, strpiped);
 
-    if (piped) {
+    /*if (piped) {
         parseSpace(strpiped[0], parsed);
         parseSpace(strpiped[1], parsedpipe);
 
     } else {
 
         parseSpace(str, parsed);
-    }
+    }*/
+
+	parseSpace(str, parsed);
 
     if (ownCmdHandler(parsed, hist))
         return 0;
@@ -306,7 +311,7 @@ int processString(char* str, char** parsed, char** parsedpipe, char ** hist)
 int main()
 {
     char inputString[MAXCOM], *parsedArgs[MAXLIST];
-    char* parsedArgsPiped[MAXLIST];
+    //char* parsedArgsPiped[MAXLIST];
     char* history[MAXLIST];
     int execFlag = 0;
     init_shell();
@@ -328,18 +333,22 @@ int main()
 	//current = (current + 1) % MAXLIST;		// incre the current
 
 
-        execFlag = processString(inputString, parsedArgs, parsedArgsPiped, history);
+        execFlag = processString(inputString, parsedArgs, history);
         // execflag returns zero if there is no command
         // or it is a builtin command,
         // 1 if it is a simple command
         // 2 if it is including a pipe.
 
+	// case arguement for same command with similar string
+	if(strcmp(parsedArgs[0], "list") == 0)	parsedArgs[0] == "ls";
+	if(strcmp(parsedArgs[0], "printwd") == 0) parsedArgs[0] = "pwd";
+
         // execute
         if (execFlag == 1)
-            execArgs(parsedArgs);
+		execArgs(parsedArgs);
 
-	if (execFlag == 2)
-            execArgsPiped(parsedArgs, parsedArgsPiped);
+	//if (execFlag == 2)
+	//	 execArgsPiped(parsedArgs, parsedArgsPiped);
     }
     return 0;
 }
