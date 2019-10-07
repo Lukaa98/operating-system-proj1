@@ -199,7 +199,7 @@ int main(void){
     notifyMark = organizeInput(inputUser, tokenizedCmds, historyList);
 
     //If-statements used incase user input "list" or "printwd"
-	// to change into ls, pwd , respectively.
+  // to change into ls, pwd , respectively.
     if(strcmp(tokenizedCmds[0], "list") == 0) tokenizedCmds[0] = "ls";
     if(strcmp(tokenizedCmds[0], "printwd") == 0) tokenizedCmds[0] = "pwd";
 
